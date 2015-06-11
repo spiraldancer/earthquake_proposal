@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Fiji Earthquakes -- Mean Magnitude at Depth</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Fiji Earthquakes -- Mean Magnitude at Depth">
+  <meta name="author" content="Jennifer Hughes">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Fiji Earthquakes -- Mean Magnitude at Depth</h1>
+    <h2>Coursera Data Scientist Specialization -- Developing Data Products Course Project</h2>
+    <p>Jennifer Hughes<br/></p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Fiji Earthquakes -- Mean Magnitude at Depth</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>This shiny application is a learning experiance for Coursera`s Data Scientist Specialization Developing Data Products course.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h2>The Data</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The data is from the R Data package (datasets) quake data set. The description of the data can be found at <a href="https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/quakes.html">https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/quakes.html</a>.</p>
+
+<p>(Excerpt from above website) :</p>
+
+<blockquote>
+<p>This is one of the Harvard PRIM-H project data sets. They in turn obtained it from Dr. John Woodhouse, Dept. of Geophysics, Harvard University. </p>
+</blockquote>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>The Application</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li>The user selects the depth from the list. </li>
+<li>The server subsets the quake data.frame for the selected depth.</li>
+<li><p>The mean magnitude at that depth is displayed.</p>
+
+<p><img src="assets/img/earthquake.png" alt=""></p></li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Mean Magnitude or No Data</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>One thing to note about the display of the mean. If there was no data found in the quake data.frame for that depth a note will be displayed stating this fact.</p>
+
+<p>Example of no data: depth=73</p>
+
+<pre><code class="r">    # subset the main data (quakes) to the selected depth
+    quakesAtXDepth &lt;- subset.data.frame(quakes, depth == 73, na.rm = TRUE)
+
+    # if the subset has rows (there was an earthquake at that depth)
+    hasQuakes &lt;- nrow(quakesAtXDepth)
+
+    if(hasQuakes == 0) {  
+
+      #reort there was no earthquakes at that depth
+      &quot;There is no earthquake observations at this depth.&quot;
+    }
+</code></pre>
+
+<pre><code>## [1] &quot;There is no earthquake observations at this depth.&quot;
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Fiji Earthquakes -- Mean Magnitude at Depth'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='The Data'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='The Application'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Mean Magnitude or No Data'>
+         4
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
